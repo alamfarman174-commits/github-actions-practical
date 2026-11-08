@@ -3,5 +3,3 @@ def add(a, b):
 
 
 print(add(10, 20))
-
-
