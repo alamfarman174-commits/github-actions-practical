@@ -1,24 +1,24 @@
-name : Python Test
+cat > .github/workflows/python.yml <<'EOF'
+name: Python Test
 
 on: push
 
-jobs :
+jobs:
   test:
-    runs-on : ubuntu-latest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
 
-   steps:
-     - uses : actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
 
-    -uses : actions/setup-python@v5
-     with:
-        python-version: '3.12'
- 
-     -name: Install dependencies
-      run : pip install pytest flake8
+      - name: Install dependencies
+        run: pip install pytest flake8
 
-      -name :Check code
-       run: flake8 app.py
+      - name: Check code
+        run: flake8 app.py
 
-
-      -name: Run tests
+      - name: Run tests
         run: pytest
+EOF
